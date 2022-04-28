@@ -1,8 +1,8 @@
 from python:3.10-alpine
 
-workdir /app/
+workdir /app
 
-run apk update && apk add curl && \
+run apk update && apk --no-cache add curl && \
     curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin && \
     curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin && \
     curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | POETRY_HOME=/opt/poetry python && \

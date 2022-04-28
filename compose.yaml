@@ -1,5 +1,7 @@
 services:
   bot:
     build: .
+    volumes:
+      - ~/.docker/config.json:/root/.docker/config.json
     ports:
       - 8080:80
