@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "imagenator"
+version = "0.1.0"
+description = "Container registry vulnerability scanner"
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+mailru-im-bot = "^0.0.21"
+fastapi = "^0.75.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.2"
+black = "^22.3.0"
+isort = "^5.10.1"
+flake8 = "^4.0.1"
+
+[tool.poetry.scripts]
+bot = "imagenator.__main__:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

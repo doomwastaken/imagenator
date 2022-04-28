@@ -1,2 +1,3 @@
-# cscan
+# Imagenator
+
 OCI container scanner
