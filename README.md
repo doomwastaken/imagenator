@@ -4,10 +4,9 @@
 
 ### Our main goals are:
 
-- Generate SBOM
-- Finding and notification about vulnerabilities in docker containers
+- Find and report vulnerabilities in images
 - Ability to control dependencies
-- Integration into CI/CD pipelines
+- Easy integration into CI/CD pipelines
 
 ### TODO:
 
