@@ -1,4 +1,5 @@
 import json
+import logging
 import typing
 
 import requests
@@ -30,8 +31,10 @@ class Bot:
             f"{API_URL}/messages/sendText", params=params
         )
         if r.status_code != 200:
-            print(f"failed response code from vk teams api: {r.status_code}")
+            logging.error(f"failed response code from vk teams api: {r.status_code}")
 
         resp: typing.Any = r.json()
         if not resp.get("ok", False):
-            print(f"cannot send message {message} to chat {to}" f"{json.dumps(resp)}")
+            logging.error(
+                f"cannot send message {message} to chat {to}" f"{json.dumps(resp)}"
+            )

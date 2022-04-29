@@ -1,3 +1,4 @@
+import logging
 import subprocess
 
 
@@ -13,7 +14,7 @@ class Image:
         if not container_name:
             return bytes()
 
-        print(f"Start generating sbom for image {container_name}")
+        logging.info(f"Start generating sbom for image {container_name}")
 
         out: subprocess.CompletedProcess
         try:
@@ -23,9 +24,9 @@ class Image:
                 check=True,
             )
         except subprocess.CalledProcessError as err:
-            print(err.stderr)
+            logging.error(err.stderr)
             raise SyftException
 
-        print("SBOM was generated succefully")
+        logging.info("SBOM was generated succefully")
 
         return out.stdout

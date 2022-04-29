@@ -1,5 +1,6 @@
-import json
 import asyncio
+import json
+import logging
 
 from .bot import Bot, encode
 from .detector import Detector, Vulnerability
@@ -52,7 +53,7 @@ class App:
 async def run(app: App, filename: str, mins: float) -> None:
     """Start shedule job"""
     while True:
-        print("Start cron scanning")
+        logging.info("Start cron scanning")
 
         data: dict = dict()
         with open(filename, "r") as f:
@@ -62,5 +63,5 @@ async def run(app: App, filename: str, mins: float) -> None:
             try:
                 app.scan(image)
             except:
-                print(f"error while scanning in cron: {image}")
+                logging.error(f"error while scanning in cron: {image}")
         await asyncio.sleep(mins * 60)

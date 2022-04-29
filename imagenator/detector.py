@@ -1,4 +1,5 @@
 import json
+import logging
 import subprocess
 from dataclasses import dataclass
 
@@ -58,7 +59,7 @@ class Detector:
         if not sbom:
             raise InvalidSBOMException
 
-        print("Start scanning SBOM")
+        logging.info("Start scanning SBOM")
 
         out: subprocess.CompletedProcess
         try:
@@ -66,6 +67,6 @@ class Detector:
                 ["grype", "-o", "json"], input=sbom, check=True, capture_output=True
             )
         except subprocess.CalledProcessError as err:
-            print(err.stderr)
+            logging.error(err.stderr)
             raise GrypeException
         return parse(result=json.loads(out.stdout))
