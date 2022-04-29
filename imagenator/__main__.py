@@ -7,12 +7,13 @@ from pydantic.dataclasses import dataclass
 
 from .app import App, run
 from .bot import Bot
+from .cache import InMemoryCache
 from .detector import Detector
 from .image import Image
 from .settings import BOT_TOKEN
 
 
-imagenator: App = App(bot=Bot(token=BOT_TOKEN), image=Image(), detector=Detector())
+imagenator: App = App(bot=Bot(token=BOT_TOKEN), cache=InMemoryCache(), image=Image(), detector=Detector())
 api: FastAPI = FastAPI()
 
 
