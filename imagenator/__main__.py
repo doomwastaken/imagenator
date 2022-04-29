@@ -6,13 +6,13 @@ from fastapi import FastAPI, status
 from pydantic.dataclasses import dataclass
 
 from .app import App, run
-from .bot import Bot
+from .bot import make_bot
 from .detector import Detector
 from .image import Image
-from .settings import BOT_TOKEN
+from .settings import BOT_TOKEN, BOT_TYPE
 
 
-imagenator: App = App(bot=Bot(token=BOT_TOKEN), image=Image(), detector=Detector())
+imagenator: App = App(bot=make_bot(BOT_TYPE, BOT_TOKEN), image=Image(), detector=Detector())
 api: FastAPI = FastAPI()
 
 
