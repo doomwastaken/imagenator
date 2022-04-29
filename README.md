@@ -3,13 +3,15 @@
 ## OCI container scanner
 
 ### Our main goals are:
- - Finding vulnerability artefacts by generating SBOMs(software bill of materials) and searching vulnerabilities in them
- - Ability to control dependencies
- - Seamless integration into CI/CD pipelines
- - Notifications via vk teams or telegram bots
 
-### Future plans:
- - Caching results
- - Additional bot integrations
- - Visualisation of dependencies
- - Support for additional types, not only containers
+- Generate SBOM
+- Finding and notification about vulnerabilities in docker containers
+- Ability to control dependencies
+- Integration into CI/CD pipelines
+
+### TODO:
+
+- Caching SBOM
+- Additional bot integrations
+- Visualization of dependencies
+- Support additional package types (apk)
