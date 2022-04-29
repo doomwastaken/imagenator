@@ -8,10 +8,10 @@ class SyftException(BaseException):
 
 
 class Image:
-    def decompose(self, container_name: str) -> str:
+    def decompose(self, container_name: str) -> bytes:
         """Generate SBOM of OCI image in JSON format"""
         if not container_name:
-            return ""
+            return bytes()
 
         print(f"Start generating sbom for image {container_name}")
 

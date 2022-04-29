@@ -12,6 +12,8 @@ class GrypeException(BaseException):
 class InvalidSBOMException(BaseException):
     """Exception while invalid SBOM revieved"""
 
+    pass
+
 
 @dataclass
 class Vulnerability:
@@ -22,18 +24,6 @@ class Vulnerability:
     version: str
     severity: str
     description: str
-
-    def __str__(self) -> str:
-        return (
-            f"Severity: {self.severity}\n"
-            f"Name: {self.name}\n"
-            f"Description: {self.description}\n"
-            f"Link: {self.link}\n"
-            f"Package name: {self.package}\n"
-            f"Package type: {self.type}\n"
-            f"Package version: {self.version}\n"
-            "\n"
-        )
 
 
 DEFAULT = "No Data"
@@ -63,7 +53,7 @@ def parse(result: dict) -> list[Vulnerability]:
 
 
 class Detector:
-    def check(self, sbom: str) -> list[Vulnerability]:
+    def check(self, sbom: bytes) -> list[Vulnerability]:
         """Call Grype for permorme vulnerability check"""
         if not sbom:
             raise InvalidSBOMException

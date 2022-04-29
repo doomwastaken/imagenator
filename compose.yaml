@@ -3,5 +3,6 @@ services:
     build: .
     volumes:
       - ~/.docker/config.json:/root/.docker/config.json
+      - ./config.json:/app/config.json
     ports:
       - 8080:80
