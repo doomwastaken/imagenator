@@ -3,6 +3,7 @@ import json
 import logging
 
 from .bot import Bot, encode
+from .cache import Cache
 from .detector import Detector, Vulnerability
 from .image import Image
 from .settings import CHAT_ID
@@ -13,8 +14,9 @@ class ScanException(BaseException):
 
 
 class App:
-    def __init__(self, bot: Bot, image: Image, detector: Detector) -> None:
+    def __init__(self, bot: Bot, cache: Cache, image: Image, detector: Detector) -> None:
         self.bot = bot
+        self.cache = cache
         self.image = image
         self.detector = detector
 
@@ -30,7 +32,7 @@ class App:
             return
 
         vulnerabilities: list[Vulnerability] = self.detector.check(
-            self.image.decompose(image)
+            self.cache.cache(image, self.image.decompose),
         )
 
         if len(vulnerabilities) == 0:
