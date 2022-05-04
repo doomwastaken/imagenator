@@ -2,11 +2,16 @@ import asyncio
 import json
 import logging
 
-from .bot import Bot, encode
+from .bot import Bot
 from .cache import Cache
 from .detector import Detector, Vulnerability
 from .image import Image
 from .settings import CHAT_ID
+
+
+def encode(message: str) -> str:
+    """Encode special characters"""
+    return message.replace(r"-", r"\-").replace(r"_", r"\_").replace(r"*", r"\*")
 
 
 class ScanException(BaseException):
