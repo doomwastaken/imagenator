@@ -10,7 +10,5 @@
 
 ### TODO:
 
-- Caching SBOM
-- Additional bot integrations
 - Visualization of dependencies
 - Support additional package types (apk)
